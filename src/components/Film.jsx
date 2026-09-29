@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 export default function Film(props) {
   const [movie, setMovie] = useState();
+  const { id } = useParams();
+  useEffect(() => {
+    const filmler = props.movies.find((flm) => flm.id === Number(id));
+    setMovie(filmler);
+  }, []);
   /* Görev 5: Film component'i yüklendiğinde id'yi params'dan almalı ve sahteVeri'deki movies içinden ilgili id'li filmi bulup getirmeli */
 
   if (!movie) {
@@ -28,8 +33,11 @@ export default function Film(props) {
           </div>
         ))}
       </div>
+
       {/* Görev 6: kaydet butonu kaydedilenler state'ine filmi eklemeli */}
-      <div className="save-button">Kaydet</div>
+      <div className="save-button" onClick={() => props.kaydedilenFilm(movie)}>
+        Kaydet
+      </div>
     </div>
   );
 }

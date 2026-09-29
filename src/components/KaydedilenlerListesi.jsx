@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function KaydedilenlerListesi(props) {
   return (
@@ -10,7 +11,9 @@ export default function KaydedilenlerListesi(props) {
         </span>
       ))}
       {/* Görev 4: Anasayfa butonu ana sayfayı açmalı */}
-      <div className="home-button">Anasayfa</div>
+      <Link to="/">
+        <div className="home-button">Anasayfa</div>
+      </Link>
     </div>
   );
 }
